@@ -1,0 +1,8 @@
+.gridTables{
+  display: flex;
+  flex-wrap: wrap;
+}
+.box-reports{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

@@ -1,0 +1,107 @@
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+    <!-- Title -->
+    <h1 class="overlay__title">
+      <span class="text-gradient">Your info</span>
+    </h1>
+  </div>
+
+  <div class="overlay__inner2">
+
+    <div class="border-bottom border-3 mb-4">
+      <h3>
+        {{userInfo?.firstName}} {{userInfo?.lastName}}
+      </h3>
+      <h6 class="d-inline-block">Username: {{userInfo?.username}}</h6>
+      <h6 class="d-inline-block ms-2">Email: {{userInfo?.email}}</h6>
+    </div>
+    <div>
+      <div *ngIf="lastAppointmentFound">
+        <h6>Birth date: {{lastAppointmentFound.birthDate}}</h6>
+        <h6>Birth city: {{lastAppointmentFound.birthCity}}</h6>
+        <h6>Gender: {{lastAppointmentFound.sex}}</h6>
+        <h6>Phone number: {{lastAppointmentFound.phoneNumber}}</h6>
+        <h6>Address: {{lastAppointmentFound.address}}</h6>
+      </div>
+    </div>
+    <button  *ngIf="user?.roles?.includes('ROLE_USER_PATIENT')" id="modifyBtn" class="btn btn-dark rounded-5 mt-5" data-bs-toggle="modal" data-bs-target="#edit"> modify <i
+        class="bi bi-pen"></i></button>
+  </div>
+</div>
+
+<!-- MODAL TO UPDATE USER DETAILS -->
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true" *ngIf="userInfo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Change User details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #formUpdate="ngForm">
+          <!-- <div class="form-floating form-group mb-3">
+            <input name="firstName" type="text" class="form-control" id="firstName" [(ngModel)]="userInfo.firstName" required
+              ngModel>
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="form-floating form-group mb-3">
+            <input name="lastName" type="text" class="form-control" id="lastName" [(ngModel)]="userInfo.lastName" required
+              ngModel>
+            <label for="lastName">Last Name</label>
+          </div>
+          <div class="form-floating form-group mb-3">
+            <input name="username" type="text" class="form-control" id="username" [(ngModel)]="userInfo.username" required
+              ngModel>
+            <label for="username">Username</label>
+          </div>
+          <div class="form-floating form-group mb-3">
+            <input name="email" type="text" class="form-control" id="email" [(ngModel)]="userInfo.email" required ngModel>
+            <label for="email">Email</label>
+          </div> -->
+          <div *ngIf="lastAppointmentFound">
+            <div class="form-floating form-group mb-3">
+              <input name="birthDate" type="date" class="form-control" id="birthDate"
+                [(ngModel)]="lastAppointmentFound.birthDate" required ngModel>
+              <label for="birthDate">Birth Date</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="birthCity" type="text" class="form-control" id="birthCity"
+                [(ngModel)]="lastAppointmentFound.birthCity" required ngModel>
+              <label for="birthCity">Birth City</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <label for="sex">{{lastAppointmentFound.sex}}</label>
+              <select #sex (change)="getSelectedValueSex(sex.value)" id="sex" class="form-select" required>
+                <option value=""></option>
+                <option value="man">man</option>
+                <option value="woman">woman</option>
+                <option value="other">other</option>
+              </select>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="phoneNumber" type="text" class="form-control" id="phoneNumber"
+                [(ngModel)]="lastAppointmentFound.phoneNumber" required ngModel>
+              <label for="phoneNumber">Phone Number</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="address" type="text" class="form-control" id="address"
+                [(ngModel)]="lastAppointmentFound.address" required ngModel>
+              <label for="address">Address</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="overlay__btn3 text-white" data-bs-dismiss="modal">Annulla</button>
+        <button type="button" class="overlay__btn2 text-white" [disabled]="!formUpdate.form.valid"
+          (click)="updateDetailsOnUserAndOnEachAppointment(formUpdate, userInfo!.id)">Conferma</button>
+      </div>
+      <div class="modal-footer">
+        <p>To modify your account data, such as email and password, contact our Patient service at <b>3578889090</b></p>
+      </div>
+    </div>
+  </div>
+</div>

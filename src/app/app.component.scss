@@ -1,0 +1,15 @@
+#footer{
+  padding: 30px 30px 0 30px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  .col{
+    padding: 50px;
+  }
+  #footitem:hover{
+    color: #24d2af;
+  }
+  a{
+    color: white;
+  }
+}

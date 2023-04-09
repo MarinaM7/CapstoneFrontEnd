@@ -1,0 +1,9 @@
+.overlay {
+  display: grid;
+  grid-template-columns: 20% 70%;
+  justify-content: space-around;
+  align-items: center;
+  .overlay__inner2{
+    text-align: start;
+  }
+}

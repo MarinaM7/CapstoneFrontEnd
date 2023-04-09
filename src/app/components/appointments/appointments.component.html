@@ -1,0 +1,154 @@
+<!-- <button *ngIf="user?.roles?.includes(patient)" class="m-5 overlay__btn overlay__btn--colors"
+  (click)="getAppointmentsByPatientId()">patient</button>
+
+<button *ngIf="user?.roles?.includes(doctor)" class="m-5 overlay__btn overlay__btn--colors"
+  (click)="getAppointmentsByDoctorId()">doc</button>
+
+<button *ngIf="user?.roles?.includes(admin)" class="m-5 overlay__btn overlay__btn--colors"
+  (click)="getAllAppointments()">admin</button> -->
+
+<div *ngFor="let item of appointments" class="rounded rounded-5 shadow m-5">
+  <div class="d-flex justify-content-between">
+    <div class="w-50 p-5">
+      <h6 class="mb-3">Appointment {{item.id}}</h6>
+      <h4>Date: {{item.date}}</h4>
+      <h4>Time: {{item.time}} </h4>
+      <button *ngIf="checkIfAppointmentIsPassed(item.id!) === true" (click)="getIdAppointment(item.id!)"
+        class="mt-3 overlay__btn overlay__btn--colors" data-bs-toggle="modal" data-bs-target="#edit">
+        <span>Change</span>
+      </button>
+      <div *ngIf="user?.roles?.includes(doctor)">
+      <button *ngIf="checkIfAppointmentAlreadyHasReport(item.id!) && checkIfAppointmentIsPassed(item.id!) === false" (click)="getAppointmentReport(item.id!)" class="mt-3 overlay__btn4 overlay__btn--colors"
+        data-bs-toggle="modal" data-bs-target="#report">
+        <span>Post Report</span>
+      </button>
+    </div>
+    </div>
+    <div *ngIf="user?.roles?.includes(doctor)" class="rounded-end-5 w-50 p-5">
+      <h5 class="mb-3">Patient Info</h5>
+      <div class="informations">
+        <p>Name: {{item.patient.firstName}} {{item.patient.lastName}}</p>
+        <p>Birth: {{item.birthDate}}, {{item.birthCity}} </p>
+        <p>Email: {{item.patient.email}} </p>
+        <p>Number: {{item.phoneNumber}} </p>
+      </div>
+    </div>
+    <div *ngIf="user?.roles?.includes(patient)" class="rounded-end-5 w-50 p-5">
+      <h5 class="mb-3">Doctor Info</h5>
+      <div class="informations">
+        <p>Name: {{item.doctor.firstName}} {{item.doctor.lastName}} </p>
+        <p>Email: {{item.doctor.email}} </p>
+      </div>
+    </div>
+    <div *ngIf="user?.roles?.includes(admin)" class="d-flex rounded-end-5 w-50 p-5">
+      <div class="patient">
+        <h5 class="mb-3">Patient Info</h5>
+        <div class="informations">
+          <p>Name: {{item.patient.firstName}} {{item.patient.lastName}}</p>
+          <p>Birth: {{item.birthDate}}, {{item.birthCity}} </p>
+          <p>Email: {{item.patient.email}} </p>
+          <p>Number: {{item.phoneNumber}} </p>
+        </div>
+      </div>
+      <div class="doc ms-5 p-2">
+        <h5 class="mb-3">Doctor Info</h5>
+        <div class="informations">
+          <p>Name: {{item.doctor.firstName}} {{item.doctor.lastName}} </p>
+          <p>Email: {{item.doctor.email}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TO UPDATE APPOINTMENT -->
+  <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Change details Appointment</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #formEdit="ngForm">
+            <div class="form-floating form-group mb-3">
+              <input name="date" type="date" class="form-control" id="date" placeholder="date" required ngModel>
+              <label for="date">Day</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="time" type="time" class="form-control" id="time" placeholder="time" required ngModel>
+              <label for="time">Time</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="overlay__btn3 text-white" data-bs-dismiss="modal">Annulla</button>
+          <button type="button" class="overlay__btn2 text-white"
+            (click)="updateAppointment(formEdit, item.id!)" data-bs-dismiss="modal">Conferma</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TO POST REPORT -->
+  <div class="modal fade" id="report" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Post Report</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>For patient {{item.patient.firstName}} {{item.patient.lastName}} </h6>
+          <form #formReport="ngForm">
+            <div class="form-floating form-group mb-3">
+              <input name="globuliRossi" type="number" class="form-control" id="globuliRossi" placeholder="globuliRossi" required ngModel>
+              <label for="globuliRossi">Globuli rossi</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="emoglobina" type="number" class="form-control" id="emoglobina" placeholder="emoglobina" required ngModel>
+              <label for="emoglobina">Emoglobina</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="ematocrito" type="number" class="form-control" id="ematocrito" placeholder="ematocrito" required ngModel>
+              <label for="ematocrito">Ematocrito</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="luc" type="number" class="form-control" id="luc" placeholder="luc" required ngModel>
+              <label for="luc">Globuli Bianchi</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="neutrofili" type="number" class="form-control" id="neutrofili" placeholder="neutrofili" required ngModel>
+              <label for="neutrofili">Neutrofili</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="linfociti" type="number" class="form-control" id="linfociti" placeholder="linfociti" required ngModel>
+              <label for="linfociti">Linfociti</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="monociti" type="number" class="form-control" id="monociti" placeholder="monociti" required ngModel>
+              <label for="monociti">Monociti</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="eosinofili" type="number" class="form-control" id="eosinofili" placeholder="eosinofili" required ngModel>
+              <label for="eosinofili">Eosinofili</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="basofili" type="number" class="form-control" id="basofili" placeholder="basofili" required ngModel>
+              <label for="basofili">Basofili</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="piastrine" type="number" class="form-control" id="piastrine" placeholder="piastrine" required ngModel>
+              <label for="piastrine">Piastrine</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="overlay__btn3 text-white" data-bs-dismiss="modal">Annulla</button>
+          <button type="button" class="overlay__btn2 text-white" [disabled]="!formReport.form.valid" (click)="insertReport(formReport)" data-bs-dismiss="modal">Conferma</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

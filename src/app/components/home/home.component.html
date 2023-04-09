@@ -1,0 +1,181 @@
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+    <!-- Title -->
+    <h1 class="overlay__title">
+      <span class="text-gradient">Medical First</span>
+    </h1>
+    <!-- Description -->
+    <p class="overlay__description">
+      With over 70% of health care decisions based on diagnostic results, we know the importance of high quality tests.
+      Medical First is committed to being a trusted healthcare partner and providing you with the information you need
+      to make decisions. </p>
+  </div>
+  <div class="d-flex justify-content-end">
+    <img class="w-75 rounded rounded-5" src="http://p-group.it/wp-content/uploads/2018/02/Smeraglia-Luxury-Clinic2.jpg"
+      alt="ok">
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay">
+  <div class="overlay__inner">
+    <h4>Tests</h4>
+    <p class="overlay__description">
+      We offer over 1000 tests, including many with next day results. Our expert doctors can offer the best clinical
+      advice about the most appropriate tests for you. There is no need to decide what test you require in advance. To
+      book a blood test, simply make an appointment with one of our doctors and they can discuss your options with you
+      before booking the test.
+    </p>
+
+  </div>
+  <div class="d-flex justify-content-end">
+    <img class="w-75 rounded rounded-5" src="https://filinf.it/wp-content/uploads/2021/04/prognosi-Copia.jpg" alt="ok">
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay">
+  <div>
+    <h1 class="overlay__title text-center mb-5">
+      <span class="text-gradient">How it works</span>
+    </h1>
+    <div class="align-items-start" id="hit">
+      <div class="text-center">
+        <div class="mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-1-square"
+            viewBox="0 0 16 16">
+            <path d="M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z" />
+            <path
+              d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z" />
+          </svg>
+        </div>
+        <p class="overlay__description">We offer over 1000 tests, including many with next day results.
+        </p>
+      </div>
+      <div class="text-center">
+        <div class="mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-2-square" viewBox="0 0 16 16">
+            <path d="M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z"/>
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z"/>
+          </svg>
+        </div>
+        <p class="overlay__description">
+          Our expert doctors can offer the best clinical advice about the most appropriate tests for you.
+        </p>
+      </div>
+      <div class="text-center">
+        <div class="mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-3-square" viewBox="0 0 16 16">
+            <path d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z"/>
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2Z"/>
+          </svg>
+        </div>
+        <p class="overlay__description">
+          To book a blood test, simply make an appointment with one of our doctors and they can discuss your options
+          with you before booking the test.
+        </p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <button class="overlay__btn overlay__btn--colors me-3 w-25" *ngIf="user?.roles?.includes(patient) || !user"
+        data-bs-toggle="modal" data-bs-target="#edit">
+        <span>Book appointment</span>
+      </button>
+      <button class="overlay__btn overlay__btn--colors w-25">
+        <a href="/contacts">
+          <span>Contact Us</span> </a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="user?.roles?.includes(patient)" class="modal fade" id="edit" data-bs-backdrop="static"
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Appointment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #formAdd="ngForm">
+          <div class="form-floating form-group mb-3">
+            <input name="date" type="date" class="form-control" id="date" placeholder="date" required ngModel>
+            <label for="date">Day</label>
+          </div>
+          <div class="form-floating form-group mb-3">
+            <input name="time" type="time" class="form-control" id="time" placeholder="time" required ngModel>
+            <label for="time">Time</label>
+          </div>
+          <div class="form-floating form-group mb-3">
+            <label for="doctor">Doctor</label>
+            <select #ref (change)="getSelectedValueDoc(ref.value)" id="doctor" class="form-select">
+              <option value=""></option>
+              <option *ngFor="let doc of docs" value="{{doc.id}}">{{doc.firstName}} {{doc.lastName}}</option>
+            </select>
+          </div>
+          <div *ngIf="!lastAppointmentFound">
+            <h6>Patient info</h6>
+            <p class="mb-0"><i>We ask you these info only the first time you book an appointment.</i></p>
+            <p><i>If you'll ever need to modify them later on, you can do it from you personal area</i></p>
+            <div class="form-floating form-group mb-3">
+              <input name="birthDate" type="date" class="form-control" id="birthDate" required ngModel>
+              <label for="birthDate">Birth Date</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="birthCity" type="text" class="form-control" id="birthCity" required ngModel>
+              <label for="birthCity">Birth City</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <label for="sex">Gender</label>
+              <select #sex (change)="getSelectedValueSex(sex.value)" id="sex" class="form-select" required>
+                <option value=""></option>
+                <option value="man">man</option>
+                <option value="woman">woman</option>
+                <option value="other">other</option>
+              </select>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="address" type="text" class="form-control" id="address" required ngModel>
+              <label for="address">Address</label>
+            </div>
+            <div class="form-floating form-group mb-3">
+              <input name="phoneNumber" type="tel" class="form-control" id="phoneNumber" required ngModel>
+              <label for="phoneNumber">Phone Number</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="overlay__btn3 text-white" data-bs-dismiss="modal">Annulla</button>
+        <button *ngIf="!lastAppointmentFound" type="button" class="overlay__btn2 text-white"
+          [disabled]="!formAdd.form.valid" (click)="insertFirstAppointment(formAdd)" data-bs-dismiss="modal">Conferma</button>
+        <button *ngIf="lastAppointmentFound" type="button" class="overlay__btn2 text-white"
+          [disabled]="!formAdd.form.valid" (click)="insertOtherAppointment(formAdd)" data-bs-dismiss="modal">Conferma</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!user" class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Are you logged in?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>If you are willing to book an appointment with us, you have to login with your profile first!</p>
+        <p>In this way you allow us to use your personal data, which is important for us to keep record of your
+          informations📋</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="overlay__btn3 text-white" data-bs-dismiss="modal">Annulla</button>
+        <button type="button" class="overlay__btn2 text-white" routerLink="/login">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

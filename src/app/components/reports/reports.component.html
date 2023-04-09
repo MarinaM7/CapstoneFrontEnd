@@ -1,0 +1,133 @@
+<div *ngIf="user?.roles?.includes(patient)" class="">
+  <div *ngFor="let item of reports" class="rounded rounded-5 shadow m-5">
+    <div class="box-reports p-5">
+      <div>
+        <h3 class="mb-2">Report {{item.id}}</h3>
+        <h5 class="mb-2">Doctor: {{item.doctor.firstName}} {{item.doctor.lastName}} </h5>
+        <h6 class="mb-4">Appointment: {{item.appointment.date}}</h6>
+        <p>Name: {{item.patient.firstName}} {{item.patient.lastName}} </p>
+        <p>Birth: {{item.appointment.birthDate}}, {{item.appointment.birthCity}} </p>
+        <p>Gender: {{item.appointment.sex}}</p>
+        <p>Email: {{item.patient.email}} </p>
+        <p>PhoneNumber: {{item.appointment.phoneNumber}} </p>
+      </div>
+      <div>
+        <table class="table mt-3">
+          <thead class="table-secondary">
+            <tr>
+              <th scope="col">Exams</th>
+              <th scope="col">Values</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"> Globuli rossi </th>
+              <td> {{item.globuliRossi}} </td>
+            </tr>
+            <tr>
+              <th scope="row">Emoglobina</th>
+              <td> {{item.emoglobina}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Ematocrito </th>
+              <td> {{item.ematocrito}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Globuli bianchi </th>
+              <td> {{item.luc}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Neutrofili </th>
+              <td> {{item.neut}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Linfociti </th>
+              <td> {{item.limph}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Monociti </th>
+              <td> {{item.mono}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Eosinofili </th>
+              <td> {{item.eos}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Basofili </th>
+              <td> {{item.baso}} </td>
+            </tr>
+            <tr>
+              <th scope="row"> Piastrine </th>
+              <td> {{item.piastrine}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="user?.roles?.includes(doctor)" class="gridTables">
+  <div *ngFor="let item of reports" class="rounded rounded-5 shadow m-5 p-3">
+    <div>
+      <h5 class="m-0"> Patient: {{item.patient.firstName}} {{item.patient.lastName}} </h5>
+      <h6 class="m-0"> Appointment date: {{item.appointment.date}} </h6>
+      <p class="m-0"> Birth: {{item.appointment.birthDate}}, {{item.appointment.birthCity}} </p>
+      <p class="m-0"> Gender: {{item.appointment.sex}} </p>
+      <p class="m-0"> PhoneNumber: {{item.appointment.phoneNumber}} </p>
+      <p></p>
+    </div>
+    <div>
+      <table class="table mt-3">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">Exams</th>
+            <th scope="col">Values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"> Globuli rossi </th>
+            <td> {{item.globuliRossi}} </td>
+          </tr>
+          <tr>
+            <th scope="row">Emoglobina</th>
+            <td> {{item.emoglobina}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Ematocrito </th>
+            <td> {{item.ematocrito}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Globuli bianchi </th>
+            <td> {{item.luc}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Neutrofili </th>
+            <td> {{item.neut}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Linfociti </th>
+            <td> {{item.limph}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Monociti </th>
+            <td> {{item.mono}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Eosinofili </th>
+            <td> {{item.eos}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Basofili </th>
+            <td> {{item.baso}} </td>
+          </tr>
+          <tr>
+            <th scope="row"> Piastrine </th>
+            <td> {{item.piastrine}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

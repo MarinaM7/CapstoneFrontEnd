@@ -1,0 +1,13 @@
+<h1 class="text-center m-3">LOGIN</h1>
+<div class="register container-fluid d-flex justify-content-center align-items-center">
+  <form class="form w-50" #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <input mdbInput type="text" id="form1" class="form-control mt-2" username required ngModel name="username" />
+    <label mdbLabel class="form-label" for="form1">Username</label>
+
+    <input mdbInput type="password" id="form1" class="form-control mt-2" password required ngModel name="password" />
+    <label mdbLabel class="form-label" for="form1">Password</label>
+
+    <button class="btn btn-primary mt-2 w-100" type="submit">Sign In</button>
+  </form>
+</div>
